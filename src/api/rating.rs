@@ -92,3 +92,25 @@ impl Rating<'_> {
         self.0.client.get(url).send().await
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use serde_json;
+
+    use crate::VotesmartProxy;
+
+    #[tokio::test]
+    async fn test_get_candidate_rating() {
+        let proxy = VotesmartProxy::new().unwrap();
+        let response = proxy
+            .rating()
+            .get_candidate_rating(53279, None)
+            .await
+            .unwrap();
+
+        let status = response.status();
+        let json = response.json::<serde_json::Value>().await.unwrap();
+        println!("{}", serde_json::to_string_pretty(&json).unwrap());
+        assert_eq!(status.is_success(), true);
+    }
+}
