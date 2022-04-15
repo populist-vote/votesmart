@@ -113,4 +113,37 @@ mod tests {
         println!("{}", serde_json::to_string_pretty(&json).unwrap());
         assert_eq!(status.is_success(), true);
     }
+
+    #[tokio::test]
+    async fn test_get_categories() {
+        let proxy = VotesmartProxy::new().unwrap();
+        let response = proxy.rating().get_categories(None).await.unwrap();
+
+        let status = response.status();
+        let json = response.json::<serde_json::Value>().await.unwrap();
+        println!("{}", serde_json::to_string_pretty(&json).unwrap());
+        assert_eq!(status.is_success(), true);
+    }
+
+    #[tokio::test]
+    async fn test_get_sig_list() {
+        let proxy = VotesmartProxy::new().unwrap();
+        let response = proxy.rating().get_sig_list(1, Some("CO")).await.unwrap();
+
+        let status = response.status();
+        let json = response.json::<serde_json::Value>().await.unwrap();
+        println!("{}", serde_json::to_string_pretty(&json).unwrap());
+        assert_eq!(status.is_success(), true);
+    }
+
+    #[tokio::test]
+    async fn test_get_sig() {
+        let proxy = VotesmartProxy::new().unwrap();
+        let response = proxy.rating().get_sig(753).await.unwrap();
+
+        let status = response.status();
+        let json = response.json::<serde_json::Value>().await.unwrap();
+        println!("{}", serde_json::to_string_pretty(&json).unwrap());
+        assert_eq!(status.is_success(), true);
+    }
 }
