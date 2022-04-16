@@ -52,7 +52,7 @@ mod tests {
     async fn test_get_bio() {
         let proxy = VotesmartProxy::new().unwrap();
         let response = proxy.candidate_bio().get_bio(110942).await.unwrap();
-        assert_eq!(response.status().is_success(), true);
+        assert!(response.status().is_success());
         let json: serde_json::Value = response.json().await.unwrap();
         // println!("{}", serde_json::to_string_pretty(&json).unwrap());
         assert_eq!(json["bio"]["candidate"]["firstName"], "Michael");
@@ -62,7 +62,7 @@ mod tests {
     async fn test_get_detailed_bio() {
         let proxy = VotesmartProxy::new().unwrap();
         let response = proxy.candidate_bio().get_detailed_bio(53279).await.unwrap();
-        assert_eq!(response.status().is_success(), true);
+        assert!(response.status().is_success());
         let json: serde_json::Value = response.json().await.unwrap();
         // println!("{}", serde_json::to_string_pretty(&json).unwrap());
         assert_eq!(
@@ -75,7 +75,7 @@ mod tests {
     async fn test_get_addl_bio() {
         let proxy = VotesmartProxy::new().unwrap();
         let response = proxy.candidate_bio().get_detailed_bio(53279).await.unwrap();
-        assert_eq!(response.status().is_success(), true);
+        assert!(response.status().is_success());
         let json: serde_json::Value = response.json().await.unwrap();
         println!("{}", serde_json::to_string_pretty(&json).unwrap());
         assert_eq!(

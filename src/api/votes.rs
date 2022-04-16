@@ -268,7 +268,7 @@ mod tests {
     async fn test_get_categories() {
         let proxy = VotesmartProxy::new().unwrap();
         let response = proxy.votes().get_categories(2020, None).await.unwrap();
-        assert_eq!(response.status().is_success(), true);
+        assert!(response.status().is_success());
         let json: serde_json::Value = response.json().await.unwrap();
         assert_eq!(json["categories"]["category"][0]["name"], "Abortion");
     }
@@ -277,7 +277,7 @@ mod tests {
     async fn test_get_bill() {
         let proxy = VotesmartProxy::new().unwrap();
         let response = proxy.votes().get_bill(32020).await.unwrap();
-        assert_eq!(response.status().is_success(), true);
+        assert!(response.status().is_success());
         let json: serde_json::Value = response.json().await.unwrap();
         assert_eq!(
             json["bill"]["title"],
@@ -289,7 +289,7 @@ mod tests {
     async fn test_get_bill_action() {
         let proxy = VotesmartProxy::new().unwrap();
         let response = proxy.votes().get_bill_action(83811).await.unwrap();
-        assert_eq!(response.status().is_success(), true);
+        assert!(response.status().is_success());
         let json: serde_json::Value = response.json().await.unwrap();
         assert_eq!(json["action"]["billId"], "32020");
     }

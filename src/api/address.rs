@@ -96,7 +96,7 @@ mod tests {
     async fn test_get_campaign() {
         let proxy = VotesmartProxy::new().unwrap();
         let response = proxy.address().get_campaign(53279).await.unwrap();
-        assert_eq!(response.status().is_success(), true);
+        assert!(response.status().is_success());
     }
 
     #[tokio::test]
@@ -107,6 +107,6 @@ mod tests {
             .get_campaign_web_address(53279)
             .await
             .unwrap();
-        assert_eq!(response.status().is_success(), true);
+        assert!(response.status().is_success());
     }
 }
