@@ -1,13 +1,13 @@
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[cfg_attr(feature = "async-graphql", derive(async_graphql::SimpleObject))]
 #[serde(rename_all = "camelCase")]
 pub struct GetCandidateVotingRecordResponse {
     pub bills: Bills,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[cfg_attr(feature = "async-graphql", derive(async_graphql::SimpleObject))]
 #[serde(rename_all = "camelCase")]
 pub struct Bills {
@@ -15,7 +15,7 @@ pub struct Bills {
     pub bill: Vec<Bill>,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[cfg_attr(feature = "async-graphql", derive(async_graphql::SimpleObject))]
 #[serde(rename_all = "camelCase")]
 pub struct GeneralInfo {
@@ -23,7 +23,7 @@ pub struct GeneralInfo {
     pub link_back: String,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[cfg_attr(feature = "async-graphql", derive(async_graphql::SimpleObject))]
 #[serde(rename_all = "camelCase")]
 pub struct Bill {
@@ -40,7 +40,7 @@ pub struct Bill {
     pub vote: String,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[cfg_attr(feature = "async-graphql", derive(async_graphql::SimpleObject))]
 #[serde(rename_all = "camelCase")]
 pub struct Categories {
