@@ -19,4 +19,4 @@ serde_json = "1.0.71"
 thiserror = "1.0.30"
 tokio = { version = "1.21.1", features = ["full"] }
 chrono = "0.4.19"
-async-graphql = { version = "5.0.5", optional = true }
+async-graphql = { version = "5.0.10", optional = true }
