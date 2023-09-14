@@ -1,5 +1,4 @@
 use crate::VotesmartProxy;
-use chrono::Datelike;
 use reqwest::{Error, Response};
 
 pub struct Election<'a>(pub &'a VotesmartProxy);
@@ -50,7 +49,7 @@ impl Election<'_> {
             operation = "Election.getElectionByZip",
             zip5 = zip5,
             zip4 = zip4.unwrap_or(""),
-            year = year.unwrap_or_else(|| chrono::Utc::now().year()),
+            year = year.unwrap_or_else(|| time::OffsetDateTime::now_utc().year()),
         );
 
         self.0.client.get(url).send().await
